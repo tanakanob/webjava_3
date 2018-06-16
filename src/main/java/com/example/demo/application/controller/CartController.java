@@ -33,7 +33,7 @@ public class CartController extends BaseController {
 
         String message;
         if (cart.remove(order)) {
-            message = order.getItem().getName() + "をカートから削除しました。";
+            message = order.getItem().getItemName() + "をカートから削除しました。";
         } else {
             message = "削除処理でエラーが発生しました。";
         }

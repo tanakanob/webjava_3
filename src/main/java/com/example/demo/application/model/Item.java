@@ -1,37 +1,39 @@
 package com.example.demo.application.model;
 
 public class Item {
-  private int id;
-  private String name;
-  private int price;
+  private int itemId;
+  private String itemName;
+  private int itemPrice;
 
   public Item(int id, String name, int price) {
-      setId(id);
-      setName(name);
-      setPrice(price);
+    setItemId(id);
+    setItemName(name);
+    setItemPrice(price);
   }
 
-  public String getName() {
-      return this.name;
+  public Item() {}
+
+  public int getItemId() {
+    return this.itemId;
   }
 
-  private void setName(String name) {
-      this.name = name;
+  public void setItemId(int id) {
+    this.itemId = id;
   }
 
-  public int getPrice() {
-      return this.price;
+  public String getItemName() {
+      return this.itemName;
   }
 
-  private void setPrice(int price) {
-      this.price = price;
+  public void setItemName(String name) {
+      this.itemName = name;
   }
 
-  public int getId() {
-      return this.id;
+  public int getItemPrice() {
+      return this.itemPrice;
   }
 
-  private void setId(int id) {
-      this.id = id;
+  public void setItemPrice(int price) {
+      this.itemPrice = price;
   }
 }

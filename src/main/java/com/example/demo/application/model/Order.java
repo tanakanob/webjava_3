@@ -26,6 +26,6 @@ public class Order {
   }
 
   public int getSubtotalPrice() {
-      return item.getPrice() * num;
+      return item.getItemPrice() * num;
   }
 }

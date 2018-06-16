@@ -16,7 +16,7 @@ public class Cart {
 
   public void add(Order order) {
       // 同じ商品がカートに入っていないかチェックする
-      Order existOrder = findOrderByItemId(order.getItem().getId());
+      Order existOrder = findOrderByItemId(order.getItem().getItemId());
       if (existOrder == null) {
           // 入っていなかったので新規追加
           orderList.add(order);
@@ -56,7 +56,7 @@ public class Cart {
 
   public Order findOrderByItemId(int itemId) {
       for(Order order : orderList) {
-          if(order.getItem().getId() == itemId) {
+          if(order.getItem().getItemId() == itemId) {
               return order;
           }
       }
