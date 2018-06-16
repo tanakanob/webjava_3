@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+</head>
+<body>
+
+<th:block th:if="${message} != null">
+  <span class="message" th:text="${message}"></span>
+  <br>
+</th:block>
+
+<th:block th:if="${#lists.isEmpty(cart.orderList)}" >
+    <span>カートに商品が入っていません。</span>
+    <br>
+</th:block>
+
+<input type="button" onclick="location.href='/itemlist'"value="戻る">
+<dl>
+
+<th:block th:if="!${#lists.isEmpty(cart.orderList)}" >
+  <th:block th:each="order: ${cart.orderList}">
+    <form action="#" th:action="@{/cart}" th:object="${cartForm}" method="post">
+    <span class="itemName"       th:text="'商品名：'    + ${order.item.name}"></span>
+    <br>
+    <span class="itemPrice"      th:text="'価格　：\\'  + ${order.item.price}"></span>
+    <br>
+    <span class="itemNum"        th:text="'点数　：'    + ${order.num}"></span>
+    <br>
+    <span class="itemSubtotal"   th:text="'小計　：\\'  + ${order.subtotalPrice}"></span>
+    <br>
+    <input type="hidden" name="itemId" th:value="${order.item.id}" />
+    <input type='submit' value='カートから削除' class='submit'>
+    </form>
+    <br><br>
+  </th:block>
+  <span class="cartTotal"        th:text="'合計　：\\'  + ${cart.totalPrice}"></span>
+</th:block>
+
+</dl>
+
+</body>
+</html>

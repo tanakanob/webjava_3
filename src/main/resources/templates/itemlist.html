@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ItemList</title>
+</head>
+<body>
+<th:block th:if="${message} != null">
+  <span class="message" th:text="${message}"></span>
+  <br>
+</th:block>
+
+<span class="cartItemNumMessage" th:text="${cartItemNumMessage}"></span>
+<br>
+<input type="button" onclick="location.href='/cart'"value="カートを見る">
+
+<dl>
+  <th:block th:each="item: ${items}">
+  <form action="#" th:action="@{/itemlist}" th:object="${listForm}" method="post">
+    <!-- <input type="hidden" name="itemName" th:value="${item.name}" /> -->
+    <input type="hidden" name="itemId" th:value="${item.id}" />
+    <span th:text="'商品名：' + ${item.name}"></span><br>
+    <span th:text="'価格　：\\' + ${item.price}"></span><br>
+    <select th:field="*{num}">
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
+    <option value='9'>9</option>
+    <option value='10'>10</option>
+    </select>個
+    <input type='submit' value='カートに入れる' class='submit'>
+    </form>
+    <br>
+  </th:block>
+</dl>
+
+</body>
+</html>
