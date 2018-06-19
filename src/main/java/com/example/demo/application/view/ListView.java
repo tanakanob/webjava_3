@@ -3,7 +3,7 @@ package com.example.demo.application.view;
 import java.util.List;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.application.model.Item;
-import com.example.demo.application.model.ListForm;
+import com.example.demo.application.model.form.ListForm;
 
 public class ListView extends ModelAndView {
   private String ATTRIBUTE_NAME_MESSAGE        = "message";

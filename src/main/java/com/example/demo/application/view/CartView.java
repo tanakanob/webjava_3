@@ -2,7 +2,7 @@ package com.example.demo.application.view;
 
 import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.application.model.Cart;
-import com.example.demo.application.model.CartForm;
+import com.example.demo.application.model.form.CartForm;
 
 public class CartView extends ModelAndView {
   private String ATTRIBUTE_NAME_MESSAGE     = "message";

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.application.model.Cart;
-import com.example.demo.application.model.CartForm;
 import com.example.demo.application.model.Order;
+import com.example.demo.application.model.form.CartForm;
 import com.example.demo.application.view.CartView;
 
 @Controller

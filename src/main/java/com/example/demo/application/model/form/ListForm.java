@@ -1,4 +1,4 @@
-package com.example.demo.application.model;
+package com.example.demo.application.model.form;
 
 public class ListForm {
   private int itemId;
