@@ -1,0 +1,46 @@
+@charset "UTF-8";
+.card {
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 10px;
+  background: #F5F0CF;
+}
+.card-img {
+  border-radius: 5px 5px 0 0;
+  max-width: auto;
+  height: 300px;
+}
+.card-content {
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.img_block img{
+  display: block;
+  margin:auto;
+}
+
+h2{
+	font-size:20px;
+	background: linear-gradient(transparent 60%, #FAE438 60%);
+}
+
+.cook-radio {
+  width: 350px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}

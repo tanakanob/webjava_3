@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ItemList</title>
+<link href="/css/card.css" th:href="@{/css/card.css}" rel="stylesheet"></link>
 </head>
 <body>
 <th:block th:if="${message} != null">
@@ -14,8 +15,10 @@
 <br>
 <input type="button" onclick="location.href='/cart'"value="カートを見る">
 
-<dl>
-  <th:block th:each="item: ${items}">
+<div class="card-list">
+  <th:block th:each="item, stat: ${items}">
+
+  <section class="card">
   <form action="#" th:action="@{/itemlist}" th:object="${listForm}" method="post">
     <input type="hidden" name="itemId" th:value="${item.itemId}" />
     <span th:text="'商品名：' + ${item.itemName}"></span><br>
@@ -33,10 +36,11 @@
     <option value='10'>10</option>
     </select>個
     <input type='submit' value='カートに入れる' class='submit'>
-    </form>
-    <br>
+  </form>
+  </section>
+  <br>
   </th:block>
-</dl>
+</div>
 
 </body>
 </html>
