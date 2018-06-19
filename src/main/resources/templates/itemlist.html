@@ -17,10 +17,9 @@
 <dl>
   <th:block th:each="item: ${items}">
   <form action="#" th:action="@{/itemlist}" th:object="${listForm}" method="post">
-    <!-- <input type="hidden" name="itemName" th:value="${item.name}" /> -->
-    <input type="hidden" name="itemId" th:value="${item.id}" />
-    <span th:text="'商品名：' + ${item.name}"></span><br>
-    <span th:text="'価格　：\\' + ${item.price}"></span><br>
+    <input type="hidden" name="itemId" th:value="${item.itemId}" />
+    <span th:text="'商品名：' + ${item.itemName}"></span><br>
+    <span th:text="'価格　：\\' + ${item.itemPrice}"></span><br>
     <select th:field="*{num}">
     <option value='1'>1</option>
     <option value='2'>2</option>

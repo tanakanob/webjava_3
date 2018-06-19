@@ -14,14 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.application.model.Cart;
 import com.example.demo.application.model.Item;
 import com.example.demo.application.model.ListForm;
-import com.example.demo.application.model.ListService;
 import com.example.demo.application.model.Order;
 import com.example.demo.application.view.ListView;
 
 @Controller
 public class ListController extends BaseController {
-  @Autowired
-  JdbcTemplate jdbcTemplate;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
 
     @RequestMapping(value="/itemlist", method = RequestMethod.GET)
@@ -30,9 +29,8 @@ public class ListController extends BaseController {
         removeMessageFromSession();
 
         Cart cart = getCartFromSession();
-        getItemList();
 
-        ModelAndView mav = new ListView(message, cart.getItemNum(), new ListForm(), new ListService().getItemList());
+        ModelAndView mav = new ListView(message, cart.getItemNum(), new ListForm(), getItemList());
         return mav;
     }
 
@@ -43,7 +41,7 @@ public class ListController extends BaseController {
         if (bindingResult.getAllErrors().size() > 0) {
             isError = true;
         } else {
-            item = new ListService().findItemById(listForm.getItemId());
+            item = getItemByItemId(listForm.getItemId());
         }
 
         if (isError == true || item == null) {
@@ -58,10 +56,10 @@ public class ListController extends BaseController {
         cart.add(order);
 
         StringBuilder messageBuf = new StringBuilder();
-        messageBuf.append(item.getItemName());
-        messageBuf.append("を");
-        messageBuf.append(listForm.getNum());
-        messageBuf.append("点カートに追加しました。");
+        messageBuf.append(item.getItemName())
+            .append("を")
+            .append(listForm.getNum())
+            .append("点カートに追加しました。");
 
         // データをセッションへ保存
         setMessageFromSession(messageBuf.toString());
@@ -76,17 +74,27 @@ public class ListController extends BaseController {
      *
      * @return
      */
-    private List<Item> getItemList() {
+    public List<Item> getItemList() {
+        //SELECTを使用してテーブルの情報をすべて取得する
+        List<Item> list = jdbcTemplate.query("SELECT * FROM items ORDER BY item_id", new BeanPropertyRowMapper<Item>(Item.class));
 
-      //SELECTを使用してテーブルの情報をすべて取得する
-      List<Item> list = jdbcTemplate.query("SELECT * FROM items ORDER BY item_id", new BeanPropertyRowMapper<Item>(Item.class));
+        return list;
+    }
 
-      return list;
+    /**
+     * データベースからitem_idが一致したアイテムデータを取得する
+     *
+     * @param itemId
+     * @return
+     */
+    public Item getItemByItemId(int itemId) {
+        //SELECTとWHEREを使用してitem_idが引数と一致するものを取得
+        List<Item> list = jdbcTemplate.query("SELECT * FROM items WHERE item_id=" + itemId, new BeanPropertyRowMapper<Item>(Item.class));
 
-      /*
-      //結果はMapのリストとして取得することもできる
-      List<Map<String, Object>> list = jdbcTemplate.queryForList("SELECT * FROM items ORDER BY item_id");
-
-      */
+        if (!list.isEmpty()) {
+            return list.get(0);
+        } else {
+            return null;
+        }
     }
 }

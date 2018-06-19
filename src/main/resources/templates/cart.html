@@ -22,15 +22,15 @@
 <th:block th:if="!${#lists.isEmpty(cart.orderList)}" >
   <th:block th:each="order: ${cart.orderList}">
     <form action="#" th:action="@{/cart}" th:object="${cartForm}" method="post">
-    <span class="itemName"       th:text="'商品名：'    + ${order.item.name}"></span>
+    <span class="itemName"       th:text="'商品名：'    + ${order.item.itemName}"></span>
     <br>
-    <span class="itemPrice"      th:text="'価格　：\\'  + ${order.item.price}"></span>
+    <span class="itemPrice"      th:text="'価格　：\\'  + ${order.item.itemPrice}"></span>
     <br>
     <span class="itemNum"        th:text="'点数　：'    + ${order.num}"></span>
     <br>
     <span class="itemSubtotal"   th:text="'小計　：\\'  + ${order.subtotalPrice}"></span>
     <br>
-    <input type="hidden" name="itemId" th:value="${order.item.id}" />
+    <input type="hidden" name="itemId" th:value="${order.item.itemId}" />
     <input type='submit' value='カートから削除' class='submit'>
     </form>
     <br><br>
