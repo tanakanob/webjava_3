@@ -13,6 +13,14 @@ public class ListView extends ModelAndView {
 
   private String VIEW_NAME = "itemlist";
 
+  /**
+   * 商品一覧表示用のView
+   *
+   * @param message
+   * @param cartItemNum
+   * @param listForm
+   * @param items
+   */
   public ListView(String message, int cartItemNum, ListForm listForm, List<Item> items) {
       if (message != null && !message.isEmpty()) {
           this.addObject(ATTRIBUTE_NAME_MESSAGE, message);

@@ -14,6 +14,15 @@ import com.example.demo.application.view.CartView;
 
 @Controller
 public class CartController extends BaseController {
+
+    /**
+     * 初期表示用
+     *
+     * セッションからカート情報を取得して一覧表示する
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/cart", method = RequestMethod.GET)
     public ModelAndView show(/*ModelAndView mav*/) {
         String message = getMessageFromSession();
@@ -25,6 +34,16 @@ public class CartController extends BaseController {
         return mav;
     }
 
+    /**
+     * 「削除」ボタン押下時の処理
+     *
+     * 選択されたアイテムをカートから削除する
+     *
+     * @param listForm
+     * @param result
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/cart", method = RequestMethod.POST)
     private ModelAndView remove(/*ModelAndView mav, */@Valid CartForm cartForm, BindingResult bindingResult, HttpServletRequest request) {
         Cart cart = getCartFromSession();

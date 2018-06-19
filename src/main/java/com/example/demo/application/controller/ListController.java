@@ -23,6 +23,14 @@ public class ListController extends BaseController {
     JdbcTemplate jdbcTemplate;
 
 
+    /**
+     * 初期表示用
+     *
+     * アイテムデータを取得して一覧表示する
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/itemlist", method = RequestMethod.GET)
     public ModelAndView show(/*ModelAndView mav*/) {
         String message = getMessageFromSession();
@@ -34,6 +42,16 @@ public class ListController extends BaseController {
         return mav;
     }
 
+    /**
+     * 「カートに入れる」ボタン押下時の処理
+     *
+     * 選択されたアイテムと個数をセッションに保存する
+     *
+     * @param listForm
+     * @param result
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/itemlist", method = RequestMethod.POST)
     private ModelAndView order(/*ModelAndView mav, */@Valid ListForm listForm, BindingResult bindingResult, HttpServletRequest request) {
         boolean isError = false;

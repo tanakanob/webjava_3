@@ -25,6 +25,11 @@ public class Order {
       this.num = num;
   }
 
+  /**
+   * オーダー情報内の小計を取得
+   *
+   * @return
+   */
   public int getSubtotalPrice() {
       return item.getItemPrice() * num;
   }

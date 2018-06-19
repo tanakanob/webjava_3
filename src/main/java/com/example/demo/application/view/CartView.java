@@ -12,6 +12,13 @@ public class CartView extends ModelAndView {
 
   private String VIEW_NAME = "cart";
 
+  /**
+   * カード情報表示用のView
+   *
+   * @param message
+   * @param cart
+   * @param cartForm
+   */
   public CartView(String message, Cart cart, CartForm cartForm) {
       this.addObject(ATTRIBUTE_NAME_MESSAGE, message);
       this.addObject(ATTRIBUTE_NAME_CART_CART, cart);
